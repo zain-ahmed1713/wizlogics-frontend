@@ -9,9 +9,17 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Form from "./components/Form";
+import NotFound from "./components/NotFound.tsx";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />}></Route>)
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route path="/signup" element={<Form mode="SIGNUP" />} />
+      <Route path="/verify/:username" element={<Form mode="VERIFY" />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
 );
 
 createRoot(document.getElementById("root")!).render(
