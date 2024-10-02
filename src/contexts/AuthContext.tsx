@@ -33,7 +33,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     checkAuthStatus();
-    // axiosInterceptor(logout);
+    axiosInterceptor(logout);
   }, []);
 
   const checkAuthStatus = async () => {
