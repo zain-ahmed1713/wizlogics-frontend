@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 interface FormProps {
   mode: "LOGIN" | "SIGNUP" | "VERIFY";
@@ -65,6 +66,7 @@ const Form = ({ mode }: FormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
+  const { login } = useAuth();
 
   const onSubmit = async (data: FormData) => {
     try {
@@ -87,9 +89,21 @@ const Form = ({ mode }: FormProps) => {
           navigate("/login");
         }
       }
+
+      if (mode === "LOGIN") {
+        const response = await login(data.username!, data.password!);
+        if (response.role === "admin") {
+          setIsLoading(false);
+          navigate("/admin-panel");
+        }
+        if (response.role === "user") {
+          setIsLoading(false);
+          navigate("/home");
+        }
+      }
     } catch (error: any) {
       setIsLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message);
     }
   };
 
