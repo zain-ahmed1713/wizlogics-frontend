@@ -19,6 +19,11 @@ import CreateCourse from "./pages/Admin/Admin-Courses/Create-Course/CreateCourse
 import ShowCourse from "./pages/Admin/Admin-Courses/Show-Course/ShowCourse.tsx";
 import ShowModule from "./pages/Admin/Admin-Courses/Show-Module/ShowModule.tsx";
 import CreateModule from "./pages/Admin/Admin-Courses/Create-Module/CreateModule.tsx";
+import Decks from "./pages/Admin/Admin-Flashcard-Decks/Decks.tsx";
+import CreateDeck from "./pages/Admin/Admin-Flashcard-Decks/Create-Deck/CreateDeck.tsx";
+import ShowDeck from "./pages/Admin/Admin-Flashcard-Decks/Show-Deck/ShowDeck.tsx";
+import CreateFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Create-Flashcard/CreateFlashcard.tsx";
+import ShowFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Show-Flashcard/ShowFlashcard.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +40,17 @@ const router = createBrowserRouter(
         <Route
           path="/admin-courses/:courseId/modules/create-module"
           element={<CreateModule />}
+        />
+        <Route path="/admin-decks" element={<Decks />} />
+        <Route path="/admin-decks/:deckId" element={<ShowDeck />} />
+        <Route
+          path="/admin-decks/:deckId/flashcard/create"
+          element={<CreateFlashcard />}
+        />
+        <Route path="/admin-create-deck" element={<CreateDeck />} />
+        <Route
+          path="/admin-flashcard/:flashcardId"
+          element={<ShowFlashcard />}
         />
       </Route>
       <Route path="*" element={<NotFound />} />
