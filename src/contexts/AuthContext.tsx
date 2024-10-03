@@ -33,7 +33,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     checkAuthStatus();
-    axiosInterceptor(logout);
+    // axiosInterceptor(logout);
   }, []);
 
   const checkAuthStatus = async () => {
@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const response = await axios.get("/api/users/auth/status", {
         withCredentials: true,
       });
-      setUser(response.data);
+      setUser(response.data.data);
     } catch (error: any) {
       setUser(null);
     } finally {
