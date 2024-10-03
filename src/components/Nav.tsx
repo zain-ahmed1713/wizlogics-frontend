@@ -65,7 +65,13 @@ export function Nav() {
           >
             Courses
           </Navbar.Link>
-          <Navbar.Link href="#">Flashcard Decks</Navbar.Link>
+          <Navbar.Link
+            onClick={() => navigate("/admin-decks")}
+            active={location.pathname === "/admin-decks"}
+            className="cursor-pointer"
+          >
+            Flashcard Decks
+          </Navbar.Link>
           {/* <Navbar.Link href="#">Pricing</Navbar.Link>
         <Navbar.Link href="#">Contact</Navbar.Link> */}
         </Navbar.Collapse>
