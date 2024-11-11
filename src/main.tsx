@@ -53,6 +53,9 @@ const router = createBrowserRouter(
           element={<ShowFlashcard />}
         />
       </Route>
+      <Route element={<ProtectedRoute />}>
+        {/* <Route path="/feed" element={} /> */}
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
   )

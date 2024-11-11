@@ -6,12 +6,15 @@ import React, {
   ReactNode,
 } from "react";
 import axios from "axios";
-import axiosInterceptor from "../axiosInterceptor";
+// import axiosInterceptor from "../axiosInterceptor";
 import toast from "react-hot-toast";
 
 interface User {
   name: string;
   email: string;
+  username?: string;
+  role: string;
+  profilePicture?: string;
 }
 
 interface AuthContextType {

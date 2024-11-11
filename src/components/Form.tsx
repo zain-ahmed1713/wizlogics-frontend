@@ -98,7 +98,7 @@ const Form = ({ mode }: FormProps) => {
         }
         if (response.role === "user") {
           setIsLoading(false);
-          navigate("/home");
+          navigate("/feed");
         }
       }
     } catch (error: any) {

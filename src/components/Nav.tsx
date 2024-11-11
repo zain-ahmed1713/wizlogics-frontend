@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function Nav() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,14 +39,18 @@ export function Nav() {
               </span>
             </Dropdown.Header>
             <Dropdown.Item>Profile</Dropdown.Item>
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
         </div>
       ) : (
         <div className="flex gap-3">
-          <Button color="success">Get Started</Button>
-          <Button color="blue">Log in</Button>
+          <Button color="success" onClick={() => navigate("/signup")}>
+            Get Started
+          </Button>
+          <Button color="blue" onClick={() => navigate("/login")}>
+            Log in
+          </Button>
         </div>
       )}
       {user?.role === "admin" ? (

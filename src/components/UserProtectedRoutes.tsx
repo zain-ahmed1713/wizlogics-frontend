@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const ProtectedRoute = () => {
+const UserProtectedRoutes = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
 
@@ -11,12 +11,6 @@ const ProtectedRoute = () => {
     if (!user) {
       toast.error("Please login first");
       navigate("/login");
-      return;
-    }
-
-    if (user?.role !== "admin") {
-      toast.error("User not authorized");
-      navigate("/home");
       return;
     }
   }, []);
@@ -32,4 +26,4 @@ const ProtectedRoute = () => {
   return user ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
-export default ProtectedRoute;
+export default UserProtectedRoutes;
