@@ -16,7 +16,7 @@ const ProtectedRoute = () => {
 
     if (user?.role !== "admin") {
       toast.error("User not authorized");
-      navigate("/home");
+      navigate("/feed");
       return;
     }
   }, []);
