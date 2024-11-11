@@ -38,6 +38,7 @@ export function Nav() {
                 @{user?.username}
               </span>
             </Dropdown.Header>
+            <Dropdown.Item>Leaderboard</Dropdown.Item>
             <Dropdown.Item>Profile</Dropdown.Item>
             <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
@@ -80,7 +81,47 @@ export function Nav() {
         <Navbar.Link href="#">Contact</Navbar.Link> */}
         </Navbar.Collapse>
       ) : (
-        ""
+        user && (
+          <Navbar.Collapse>
+            <Navbar.Link
+              onClick={() => navigate("/feed")}
+              active={location.pathname === "/feed"}
+              className="cursor-pointer"
+            >
+              Feed
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/courses")}
+              active={location.pathname === "/courses"}
+              className="cursor-pointer"
+            >
+              Courses
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/flashcard-decks")}
+              active={location.pathname === "/flashcard-decks"}
+              className="cursor-pointer"
+            >
+              Flashcard Decks
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/code")}
+              active={location.pathname === "/code"}
+              className="cursor-pointer"
+            >
+              Code Playground
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/ask-ai")}
+              active={location.pathname === "/ask-ai"}
+              className="cursor-pointer"
+            >
+              Ask AI
+            </Navbar.Link>
+            {/* <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link> */}
+          </Navbar.Collapse>
+        )
       )}
     </Navbar>
   );
