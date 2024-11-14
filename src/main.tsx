@@ -26,6 +26,7 @@ import CreateFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Create-Flashcar
 import ShowFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Show-Flashcard/ShowFlashcard.tsx";
 import ShowCoursesToUsers from "./pages/Users/User-Courses/Show-Courses/ShowCoursesToUsers.tsx";
 import UserProtectedRoutes from "./components/UserProtectedRoutes.tsx";
+import ShowCourseDetails from "./pages/Users/User-Courses/Show-Course-Details/ShowCourseDetails.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,6 +58,7 @@ const router = createBrowserRouter(
       </Route>
       <Route element={<UserProtectedRoutes />}>
         <Route path="/courses" element={<ShowCoursesToUsers />} />
+        <Route path="/courses/:courseId" element={<ShowCourseDetails />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
