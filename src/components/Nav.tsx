@@ -92,14 +92,14 @@ export function Nav() {
             </Navbar.Link>
             <Navbar.Link
               onClick={() => navigate("/courses")}
-              active={location.pathname === "/courses"}
+              active={/\/courses(\/.*)?$/.test(location.pathname)}
               className="cursor-pointer"
             >
               Courses
             </Navbar.Link>
             <Navbar.Link
               onClick={() => navigate("/flashcard-decks")}
-              active={location.pathname === "/flashcard-decks"}
+              active={/\/flashcard-decks(\/.*)?$/.test(location.pathname)}
               className="cursor-pointer"
             >
               Flashcard Decks
