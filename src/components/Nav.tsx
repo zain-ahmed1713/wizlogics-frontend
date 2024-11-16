@@ -38,8 +38,11 @@ export function Nav() {
                 @{user?.username}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Leaderboard</Dropdown.Item>
             <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/enrolled-courses")}>
+              Enrolled Courses
+            </Dropdown.Item>
+            <Dropdown.Item>Leaderboard</Dropdown.Item>
             <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />

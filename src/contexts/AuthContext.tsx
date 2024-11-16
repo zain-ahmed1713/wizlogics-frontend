@@ -10,6 +10,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 interface User {
+  _id: string;
   name: string;
   email: string;
   username?: string;

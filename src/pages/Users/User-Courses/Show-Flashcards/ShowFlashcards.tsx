@@ -29,7 +29,6 @@ const ShowFlashcards = () => {
 
       if (response.status === 200) {
         setFlashcards(response?.data?.data);
-        console.log(response);
       }
     } catch (error: any) {
       toast.error(

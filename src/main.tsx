@@ -29,6 +29,9 @@ import UserProtectedRoutes from "./components/UserProtectedRoutes.tsx";
 import ShowCourseDetails from "./pages/Users/User-Courses/Show-Course-Details/ShowCourseDetails.tsx";
 import ShowFlashcardDecks from "./pages/Users/User-Courses/Show-Flashcard-Decks/ShowFlashcardDecks.tsx";
 import ShowFlashcards from "./pages/Users/User-Courses/Show-Flashcards/ShowFlashcards.tsx";
+import ShowEnrolledCourses from "./pages/Users/User-Courses/Show-Enrolled-Courses/ShowEnrolledCourses.tsx";
+import ShowCourseModules from "./pages/Users/User-Courses/Show-Course-Modules/ShowCourseModules.tsx";
+import ShowModules from "./pages/Users/User-Courses/Show-Modules/ShowModules.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,6 +66,12 @@ const router = createBrowserRouter(
         <Route path="/courses/:courseId" element={<ShowCourseDetails />} />
         <Route path="/flashcard-decks" element={<ShowFlashcardDecks />} />
         <Route path="/flashcard-decks/:deckId" element={<ShowFlashcards />} />
+        <Route path="/enrolled-courses" element={<ShowEnrolledCourses />} />
+        <Route
+          path="/enrolled-courses/:courseId"
+          element={<ShowCourseModules />}
+        />
+        <Route path="/module/:moduleId" element={<ShowModules />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
