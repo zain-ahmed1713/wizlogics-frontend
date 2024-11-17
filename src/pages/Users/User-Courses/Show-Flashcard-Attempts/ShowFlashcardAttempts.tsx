@@ -2,7 +2,6 @@ import axios from "axios";
 import { Button, Card, Modal } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 
 interface Flashcards {
@@ -11,19 +10,25 @@ interface Flashcards {
   answer: string;
 }
 
-const ShowFlashcards = () => {
-  const [flashcards, setFlashcards] = useState<Flashcards[]>([]);
+interface FlashcardAttempts {
+  _id: string;
+  flashcardID: Flashcards;
+  status: boolean;
+  dateAttempted: Date;
+}
+
+const ShowFlashcardAttempts = () => {
+  const [flashcards, setFlashcards] = useState<FlashcardAttempts[]>([]);
   const [selectedFlashcard, setSelectedFlashcard] = useState<Flashcards | null>(
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const params = useParams();
   const { user } = useAuth();
 
   const fetchFlashcards = async () => {
     try {
       const response = await axios.get(
-        `/api/admin/get-all-flashcards/${params?.deckId}`,
+        `/api/admin/show-attempted-flashcards/${user?._id}`,
         {
           withCredentials: true,
         }
@@ -54,6 +59,7 @@ const ShowFlashcards = () => {
       );
 
       if (response.status === 200) {
+        setFlashcards(response?.data?.data);
         if (status) {
           toast.success("Congratulations!! You got it right.");
           setIsModalOpen(false);
@@ -87,16 +93,18 @@ const ShowFlashcards = () => {
   return (
     <div className="w-screen h-screen text-white">
       <div className="w-full py-8">
-        <h2 className="text-4xl font-bold text-center">Flashcards</h2>
+        <h2 className="text-4xl font-bold text-center">
+          Your Attempted Flashcards
+        </h2>
       </div>
       <div className="courses-cards px-4 flex justify-center items-center gap-4 flex-wrap">
         {flashcards?.map((flashcard) => (
-          <Card key={flashcard._id} className="max-w-sm">
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {flashcard.question}
+          <Card key={flashcard?.flashcardID?._id} className="max-w-sm">
+            <h5 className="text-2xl font-bold text-center tracking-tight text-gray-900 dark:text-white">
+              {flashcard?.flashcardID?.question}
             </h5>
-            <Button onClick={() => handleSeeAnswer(flashcard)}>
-              See Answer
+            <Button onClick={() => handleSeeAnswer(flashcard?.flashcardID)}>
+              See Answer and Re-attempt
               <svg
                 className="-mr-1 ml-2 h-5 w-5"
                 fill="currentColor"
@@ -110,6 +118,15 @@ const ShowFlashcards = () => {
                 />
               </svg>
             </Button>
+            <div>
+              <p className="text-sm">
+                Status: {flashcard?.status ? "Correct" : "Wrong"}
+              </p>
+              <p className="text-sm">
+                Date Attempted:{" "}
+                {new Date(flashcard?.dateAttempted).toDateString()}
+              </p>
+            </div>
           </Card>
         ))}
       </div>
@@ -143,4 +160,4 @@ const ShowFlashcards = () => {
   );
 };
 
-export default ShowFlashcards;
+export default ShowFlashcardAttempts;

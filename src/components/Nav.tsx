@@ -42,6 +42,9 @@ export function Nav() {
             <Dropdown.Item onClick={() => navigate("/enrolled-courses")}>
               Enrolled Courses
             </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/flashcard-attempts")}>
+              Flashcard Attempts
+            </Dropdown.Item>
             <Dropdown.Item>Leaderboard</Dropdown.Item>
             <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
