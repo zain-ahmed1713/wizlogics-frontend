@@ -33,6 +33,7 @@ import ShowEnrolledCourses from "./pages/Users/User-Courses/Show-Enrolled-Course
 import ShowCourseModules from "./pages/Users/User-Courses/Show-Course-Modules/ShowCourseModules.tsx";
 import ShowModules from "./pages/Users/User-Courses/Show-Modules/ShowModules.tsx";
 import ShowFlashcardAttempts from "./pages/Users/User-Courses/Show-Flashcard-Attempts/ShowFlashcardAttempts.tsx";
+import Feed from "./pages/Users/Feed/Feed.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -74,6 +75,7 @@ const router = createBrowserRouter(
         />
         <Route path="/module/:moduleId" element={<ShowModules />} />
         <Route path="/flashcard-attempts" element={<ShowFlashcardAttempts />} />
+        <Route path="/feed" element={<Feed />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
