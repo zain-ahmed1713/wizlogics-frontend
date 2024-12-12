@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({
   post,
@@ -16,18 +17,26 @@ const Post = ({
   handleUnLike: any;
   likeBtnLoading: boolean;
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex p-4 border-b w-full mb-6">
       <img
+        onClick={() => navigate(`/profile/${user?.username}`)}
         src={
           user?.profileImage ||
           "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
         }
         alt={`${user?.username}'s profile`}
-        className="w-12 h-12 rounded-full mr-4 object-cover"
+        className="w-12 h-12 rounded-full mr-4 object-cover hover:cursor-pointer"
       />
       <div className="flex-grow">
-        <div className="font-bold">{user?.username}</div>
+        <div
+          onClick={() => navigate(`/profile/${user?.username}`)}
+          className="font-bold hover:cursor-pointer"
+        >
+          {user?.username}
+        </div>
         <div className="mt-2">{post}</div>
         <button
           disabled={likeBtnLoading}

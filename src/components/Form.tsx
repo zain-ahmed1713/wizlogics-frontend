@@ -75,7 +75,7 @@ const Form = ({ mode }: FormProps) => {
         const response = await axios.post("/api/users/register", data);
         if (response.status === 201) {
           setIsLoading(false);
-          navigate(`/verify/${data.username}`);
+          navigate(`/login`);
         }
       }
 

@@ -36,6 +36,7 @@ import ShowFlashcardAttempts from "./pages/Users/User-Courses/Show-Flashcard-Att
 import Feed from "./pages/Users/Feed/Feed.tsx";
 import AskAI from "./pages/Ask-AI/AskAI.tsx";
 import CodePlayground from "./pages/Code-Playground/CodePlayground.tsx";
+import Profile from "./pages/Users/Profile/Profile.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -81,6 +82,7 @@ const router = createBrowserRouter(
         <Route path="/ask-ai" element={<AskAI />} />
         <Route path="/code" element={<CodePlayground />} />
       </Route>
+      <Route path="/profile/:username" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

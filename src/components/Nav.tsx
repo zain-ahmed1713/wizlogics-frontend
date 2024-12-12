@@ -21,7 +21,10 @@ export function Nav() {
             inline
             label={
               <img
-                src={user?.profilePicture}
+                src={
+                  user?.profilePicture ||
+                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                }
                 className="w-10 h-10 object-cover rounded-full"
               ></img>
               //   <Avatar
@@ -38,14 +41,20 @@ export function Nav() {
                 @{user?.username}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => navigate(`/profile/${user?.username}`)}
+            >
+              Profile
+            </Dropdown.Item>
             <Dropdown.Item onClick={() => navigate("/enrolled-courses")}>
               Enrolled Courses
             </Dropdown.Item>
             <Dropdown.Item onClick={() => navigate("/flashcard-attempts")}>
               Flashcard Attempts
             </Dropdown.Item>
-            <Dropdown.Item>Leaderboard</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/leaderboard")}>
+              Leaderboard
+            </Dropdown.Item>
             <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
