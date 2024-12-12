@@ -75,10 +75,10 @@ int main() {
         <select
           value={language}
           onChange={handleLanguageChange}
-          className="mr-4 p-2 border rounded"
+          className="mr-4 p-2 border rounded bg-[#1b2937] text-white"
         >
           {Object.keys(languageTemplates).map((lang) => (
-            <option key={lang} value={lang}>
+            <option key={lang} value={lang} className="bg-[#1b2937]">
               {lang === "nodejs" ? "JAVASCRIPT" : lang.toUpperCase()}
             </option>
           ))}
@@ -87,7 +87,7 @@ int main() {
           onClick={handleExecuteCode}
           disabled={isLoading}
           className={`
-            px-4 py-2 rounded 
+            px-4 py-2 rounded
             ${
               isLoading
                 ? "bg-gray-300 cursor-not-allowed"
@@ -101,7 +101,7 @@ int main() {
       <textarea
         value={code}
         onChange={(e) => setCode(e.target.value)}
-        className="w-full h-64 p-2 mb-4 border rounded font-mono"
+        className="w-full h-64 p-2 mb-4 border rounded font-mono bg-[#1b2937] text-white"
         placeholder="Write your code here..."
       />
       <div className="mt-4">
@@ -111,7 +111,7 @@ int main() {
             {error}
           </div>
         )}
-        <pre className="bg-gray-100 p-2 rounded overflow-auto">
+        <pre className="bg-[#1b2937] text-white p-2 rounded overflow-auto">
           {output || "Output will appear here..."}
         </pre>
       </div>
