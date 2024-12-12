@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import { Navigate, Outlet } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 const UserProtectedRoutes = () => {
   const { user, loading } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      toast.error("Please login first");
-      navigate("/login");
-      return;
-    }
-  }, []);
-
   if (loading) {
     return (
       <div className="w-full h-full flex justify-center items-center">
-        <div className="text-white text-4xl font-bold">Loading...</div>
+        <ThreeDots
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
       </div>
     );
   }
