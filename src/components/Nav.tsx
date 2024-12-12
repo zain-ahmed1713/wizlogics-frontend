@@ -21,7 +21,10 @@ export function Nav() {
             inline
             label={
               <img
-                src={user?.profilePicture}
+                src={
+                  user?.profilePicture ||
+                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                }
                 className="w-10 h-10 object-cover rounded-full"
               ></img>
               //   <Avatar
@@ -38,7 +41,20 @@ export function Nav() {
                 @{user?.username}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Profile</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => navigate(`/profile/${user?.username}`)}
+            >
+              Profile
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/enrolled-courses")}>
+              Enrolled Courses
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/flashcard-attempts")}>
+              Flashcard Attempts
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/leaderboard")}>
+              Leaderboard
+            </Dropdown.Item>
             <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
@@ -80,7 +96,47 @@ export function Nav() {
         <Navbar.Link href="#">Contact</Navbar.Link> */}
         </Navbar.Collapse>
       ) : (
-        ""
+        user && (
+          <Navbar.Collapse>
+            <Navbar.Link
+              onClick={() => navigate("/feed")}
+              active={location.pathname === "/feed"}
+              className="cursor-pointer"
+            >
+              Feed
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/courses")}
+              active={/\/courses(\/.*)?$/.test(location.pathname)}
+              className="cursor-pointer"
+            >
+              Courses
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/flashcard-decks")}
+              active={/\/flashcard-decks(\/.*)?$/.test(location.pathname)}
+              className="cursor-pointer"
+            >
+              Flashcard Decks
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/code")}
+              active={location.pathname === "/code"}
+              className="cursor-pointer"
+            >
+              Code Playground
+            </Navbar.Link>
+            <Navbar.Link
+              onClick={() => navigate("/ask-ai")}
+              active={location.pathname === "/ask-ai"}
+              className="cursor-pointer"
+            >
+              Ask AI
+            </Navbar.Link>
+            {/* <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link> */}
+          </Navbar.Collapse>
+        )
       )}
     </Navbar>
   );

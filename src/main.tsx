@@ -24,10 +24,27 @@ import CreateDeck from "./pages/Admin/Admin-Flashcard-Decks/Create-Deck/CreateDe
 import ShowDeck from "./pages/Admin/Admin-Flashcard-Decks/Show-Deck/ShowDeck.tsx";
 import CreateFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Create-Flashcard/CreateFlashcard.tsx";
 import ShowFlashcard from "./pages/Admin/Admin-Flashcard-Decks/Show-Flashcard/ShowFlashcard.tsx";
+import ShowCoursesToUsers from "./pages/Users/User-Courses/Show-Courses/ShowCoursesToUsers.tsx";
+import UserProtectedRoutes from "./components/UserProtectedRoutes.tsx";
+import ShowCourseDetails from "./pages/Users/User-Courses/Show-Course-Details/ShowCourseDetails.tsx";
+import ShowFlashcardDecks from "./pages/Users/User-Courses/Show-Flashcard-Decks/ShowFlashcardDecks.tsx";
+import ShowFlashcards from "./pages/Users/User-Courses/Show-Flashcards/ShowFlashcards.tsx";
+import ShowEnrolledCourses from "./pages/Users/User-Courses/Show-Enrolled-Courses/ShowEnrolledCourses.tsx";
+import ShowCourseModules from "./pages/Users/User-Courses/Show-Course-Modules/ShowCourseModules.tsx";
+import ShowModules from "./pages/Users/User-Courses/Show-Modules/ShowModules.tsx";
+import ShowFlashcardAttempts from "./pages/Users/User-Courses/Show-Flashcard-Attempts/ShowFlashcardAttempts.tsx";
+import Feed from "./pages/Users/Feed/Feed.tsx";
+import AskAI from "./pages/Ask-AI/AskAI.tsx";
+import CodePlayground from "./pages/Code-Playground/CodePlayground.tsx";
+import Profile from "./pages/Users/Profile/Profile.tsx";
+import Leaderboard from "./pages/Leaderboard/Leaderboard.tsx";
+import Home from "./pages/Home/Home.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route path="" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/signup" element={<Form mode="SIGNUP" />} />
       <Route path="/verify/:username" element={<Form mode="VERIFY" />} />
       <Route path="/login" element={<Form mode="LOGIN" />} />
@@ -53,9 +70,24 @@ const router = createBrowserRouter(
           element={<ShowFlashcard />}
         />
       </Route>
-      <Route element={<ProtectedRoute />}>
-        {/* <Route path="/feed" element={} /> */}
+      <Route element={<UserProtectedRoutes />}>
+        <Route path="/courses" element={<ShowCoursesToUsers />} />
+        <Route path="/courses/:courseId" element={<ShowCourseDetails />} />
+        <Route path="/flashcard-decks" element={<ShowFlashcardDecks />} />
+        <Route path="/flashcard-decks/:deckId" element={<ShowFlashcards />} />
+        <Route path="/enrolled-courses" element={<ShowEnrolledCourses />} />
+        <Route
+          path="/enrolled-courses/:courseId"
+          element={<ShowCourseModules />}
+        />
+        <Route path="/module/:moduleId" element={<ShowModules />} />
+        <Route path="/flashcard-attempts" element={<ShowFlashcardAttempts />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/ask-ai" element={<AskAI />} />
+        <Route path="/code" element={<CodePlayground />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Route>
+      <Route path="/profile/:username" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
