@@ -38,10 +38,13 @@ import AskAI from "./pages/Ask-AI/AskAI.tsx";
 import CodePlayground from "./pages/Code-Playground/CodePlayground.tsx";
 import Profile from "./pages/Users/Profile/Profile.tsx";
 import Leaderboard from "./pages/Leaderboard/Leaderboard.tsx";
+import Home from "./pages/Home/Home.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route path="" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/signup" element={<Form mode="SIGNUP" />} />
       <Route path="/verify/:username" element={<Form mode="VERIFY" />} />
       <Route path="/login" element={<Form mode="LOGIN" />} />
