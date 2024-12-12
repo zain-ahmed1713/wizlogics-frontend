@@ -37,6 +37,7 @@ import Feed from "./pages/Users/Feed/Feed.tsx";
 import AskAI from "./pages/Ask-AI/AskAI.tsx";
 import CodePlayground from "./pages/Code-Playground/CodePlayground.tsx";
 import Profile from "./pages/Users/Profile/Profile.tsx";
+import Leaderboard from "./pages/Leaderboard/Leaderboard.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -81,6 +82,7 @@ const router = createBrowserRouter(
         <Route path="/feed" element={<Feed />} />
         <Route path="/ask-ai" element={<AskAI />} />
         <Route path="/code" element={<CodePlayground />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Route>
       <Route path="/profile/:username" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
