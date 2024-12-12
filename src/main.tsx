@@ -34,6 +34,8 @@ import ShowCourseModules from "./pages/Users/User-Courses/Show-Course-Modules/Sh
 import ShowModules from "./pages/Users/User-Courses/Show-Modules/ShowModules.tsx";
 import ShowFlashcardAttempts from "./pages/Users/User-Courses/Show-Flashcard-Attempts/ShowFlashcardAttempts.tsx";
 import Feed from "./pages/Users/Feed/Feed.tsx";
+import AskAI from "./pages/Ask-AI/AskAI.tsx";
+import CodePlayground from "./pages/Code-Playground/CodePlayground.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -76,6 +78,8 @@ const router = createBrowserRouter(
         <Route path="/module/:moduleId" element={<ShowModules />} />
         <Route path="/flashcard-attempts" element={<ShowFlashcardAttempts />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/ask-ai" element={<AskAI />} />
+        <Route path="/code" element={<CodePlayground />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
