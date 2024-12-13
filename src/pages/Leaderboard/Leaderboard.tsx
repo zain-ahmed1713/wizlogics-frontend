@@ -38,9 +38,9 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="h-screen text-white">
+    <div className="h-screen text-white overflow-auto">
       <div className="py-6 text-3xl font-semibold text-center">Leaderboard</div>
-      <div className="bg-[#1b2937] shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto">
+      <div className="bg-[#1b2937] shadow-lg rounded-2xl p-6 w-full max-w-md mx-auto mb-12">
         <div className="space-y-4">
           {leaderboardData.map((user, index) => (
             <div key={user._id} className="flex items-center rounded-lg p-3">

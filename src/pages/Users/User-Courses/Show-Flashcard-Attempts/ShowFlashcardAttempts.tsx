@@ -91,13 +91,13 @@ const ShowFlashcardAttempts = () => {
   };
 
   return (
-    <div className="w-screen h-screen text-white">
+    <div className="w-screen h-screen text-white overflow-auto">
       <div className="w-full py-8">
         <h2 className="text-4xl font-bold text-center">
           Your Attempted Flashcards
         </h2>
       </div>
-      <div className="courses-cards px-4 flex justify-center items-center gap-4 flex-wrap">
+      <div className="courses-cards px-4 flex justify-center items-center gap-4 flex-wrap mb-12">
         {flashcards?.map((flashcard) => (
           <Card key={flashcard?.flashcardID?._id} className="max-w-sm">
             <h5 className="text-2xl font-bold text-center tracking-tight text-gray-900 dark:text-white">
