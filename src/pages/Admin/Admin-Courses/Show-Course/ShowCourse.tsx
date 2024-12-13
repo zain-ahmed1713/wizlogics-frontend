@@ -105,7 +105,7 @@ const ShowCourse = () => {
   };
 
   return (
-    <div className="text-white px-3 py-2">
+    <div className="text-white px-3 py-2 overflow-auto h-screen">
       <div className="mb-3">
         {isEditingName ? (
           <input
